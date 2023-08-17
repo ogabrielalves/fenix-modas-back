@@ -4,8 +4,8 @@ import com.fenixmodas.fenixmodasapi.dtos.request.produto.NovoProduto;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Entity(name = "produto")
-@Table(name = "produto")
+@Entity(name = "produtos")
+@Table(name = "produtos")
 @Getter
 @Setter
 @AllArgsConstructor
