@@ -1,5 +1,6 @@
 package com.fenixmodas.fenixmodasapi.controllers;
 
+import com.fenixmodas.fenixmodasapi.dtos.request.produto.DadosAtualizacaoProduto;
 import com.fenixmodas.fenixmodasapi.dtos.request.produto.ListagemProdutos;
 import com.fenixmodas.fenixmodasapi.dtos.request.produto.NovoProduto;
 import com.fenixmodas.fenixmodasapi.services.ProdutoService;
@@ -36,5 +37,17 @@ public class ProdutoController {
     @GetMapping("/{codigo}")
     public ResponseEntity<?> listarPorId(@PathVariable String codigo) {
         return service.listarPorId(codigo);
+    }
+
+    @PutMapping
+    @Transactional
+    public ResponseEntity<?> atualizarProduto(@RequestBody @Valid DadosAtualizacaoProduto dados) {
+        return service.atualizarProduto(dados);
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity<?> deletarPdotuo(@PathVariable Long id) {
+        return service.deletarProduto(id);
     }
 }

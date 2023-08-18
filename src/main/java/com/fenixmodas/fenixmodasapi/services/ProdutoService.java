@@ -1,5 +1,6 @@
 package com.fenixmodas.fenixmodasapi.services;
 
+import com.fenixmodas.fenixmodasapi.dtos.request.produto.DadosAtualizacaoProduto;
 import com.fenixmodas.fenixmodasapi.dtos.request.produto.ListagemProdutos;
 import com.fenixmodas.fenixmodasapi.dtos.request.produto.NovoProduto;
 import com.fenixmodas.fenixmodasapi.models.Produto;
@@ -43,5 +44,16 @@ public class ProdutoService {
             return ResponseEntity.ok(produto);
         }
         return ResponseEntity.notFound().build();
+    }
+
+    public ResponseEntity<?> atualizarProduto(DadosAtualizacaoProduto dados) {
+        Produto produtoAtualizado = produtoRepository.getReferenceById(dados.id());
+        produtoAtualizado.atualizarProduto(dados);
+        return ResponseEntity.ok(new ListagemProdutos(produtoAtualizado));
+    }
+
+    public ResponseEntity<?> deletarProduto(Long id) {
+        produtoRepository.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }
