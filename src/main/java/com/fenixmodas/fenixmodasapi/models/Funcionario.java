@@ -1,6 +1,7 @@
 package com.fenixmodas.fenixmodasapi.models;
 
-import com.fenixmodas.fenixmodasapi.dtos.request.funcionario.NovoFuncionario;
+import com.fenixmodas.fenixmodasapi.dtos.funcionario.DadosAtualizacaoFuncionario;
+import com.fenixmodas.fenixmodasapi.dtos.funcionario.NovoFuncionario;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -35,5 +36,15 @@ public class Funcionario {
         this.salario = novoFuncionario.salario();
         this.login = novoFuncionario.login();
         this.senha = novoFuncionario.senha();
+    }
+
+    public void atualizarFuncionario(DadosAtualizacaoFuncionario dados) {
+        if (dados.salario() != null) {
+            this.salario = dados.salario();
+        }
+
+        if (dados.senha() != null) {
+            this.senha = dados.senha();
+        }
     }
 }

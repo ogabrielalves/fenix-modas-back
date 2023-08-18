@@ -1,4 +1,4 @@
-package com.fenixmodas.fenixmodasapi.dtos.request.funcionario;
+package com.fenixmodas.fenixmodasapi.dtos.funcionario;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

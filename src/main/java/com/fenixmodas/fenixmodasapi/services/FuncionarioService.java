@@ -1,7 +1,9 @@
 package com.fenixmodas.fenixmodasapi.services;
 
-import com.fenixmodas.fenixmodasapi.dtos.request.funcionario.ListagemFuncionarios;
-import com.fenixmodas.fenixmodasapi.dtos.request.funcionario.NovoFuncionario;
+import com.fenixmodas.fenixmodasapi.dtos.funcionario.DadosAtualizacaoFuncionario;
+import com.fenixmodas.fenixmodasapi.dtos.funcionario.ListagemFuncionarioDetalhado;
+import com.fenixmodas.fenixmodasapi.dtos.funcionario.ListagemFuncionarios;
+import com.fenixmodas.fenixmodasapi.dtos.funcionario.NovoFuncionario;
 import com.fenixmodas.fenixmodasapi.models.Funcionario;
 import com.fenixmodas.fenixmodasapi.repositories.FuncionarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +43,24 @@ public class FuncionarioService {
     }
 
     public ResponseEntity<?> excluirFuncionario(Long id) {
-        funcionarioRepository.deleteById(id);
-        return ResponseEntity.noContent().build();
+        if (funcionarioRepository.existsById(id)) {
+            funcionarioRepository.deleteById(id);
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    public ResponseEntity<?> atualizarFuncionario(DadosAtualizacaoFuncionario dados) {
+        Funcionario funcionarioAtualizado = funcionarioRepository.getReferenceById(dados.id());
+        funcionarioAtualizado.atualizarFuncionario(dados);
+        return ResponseEntity.ok(new ListagemFuncionarioDetalhado(funcionarioAtualizado));
+    }
+
+    public ResponseEntity<ListagemFuncionarioDetalhado> detalharFuncionario(Long id) {
+        if (funcionarioRepository.existsById(id)) {
+            Funcionario funcionario = funcionarioRepository.getReferenceById(id);
+            return ResponseEntity.ok(new ListagemFuncionarioDetalhado(funcionario));
+        }
+        return ResponseEntity.notFound().build();
     }
 }
