@@ -1,5 +1,6 @@
 package com.fenixmodas.fenixmodasapi.models;
 
+import com.fenixmodas.fenixmodasapi.dtos.request.produto.DadosAtualizacaoProduto;
 import com.fenixmodas.fenixmodasapi.dtos.request.produto.NovoProduto;
 import jakarta.persistence.*;
 import lombok.*;
@@ -34,6 +35,9 @@ public class Produto {
     @Column(name = "quantidade")
     private Integer quantidade;
 
+    @Column(name = "em_estoque")
+    private Boolean emEstoque;
+
     public Produto(NovoProduto novoProduto) {
         this.nome = novoProduto.nome();
         this.categoria = novoProduto.categoria();
@@ -41,5 +45,21 @@ public class Produto {
         this.precoCompra = novoProduto.precoCompra();
         this.precoVenda = novoProduto.precoVenda();
         this.quantidade = novoProduto.quantidade();
+        this.emEstoque = novoProduto.quantidade() > 0;
+    }
+
+    public void atualizarProduto(DadosAtualizacaoProduto dados) {
+        if (dados.precoCompra() != null) {
+            this.precoCompra = dados.precoCompra();
+        }
+
+        if (dados.precoVenda() != null) {
+            this.precoVenda = dados.precoVenda();
+        }
+
+        if (dados.quantidade() != null) {
+            this.quantidade = dados.quantidade();
+            this.emEstoque = dados.quantidade() > 0;
+        }
     }
 }

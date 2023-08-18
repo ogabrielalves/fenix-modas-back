@@ -1,0 +1,1 @@
+ALTER TABLE produtos ADD COLUMN em_estoque BOOLEAN;

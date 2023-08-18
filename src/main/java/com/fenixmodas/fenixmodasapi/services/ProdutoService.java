@@ -53,7 +53,10 @@ public class ProdutoService {
     }
 
     public ResponseEntity<?> deletarProduto(Long id) {
-        produtoRepository.deleteById(id);
-        return ResponseEntity.noContent().build();
+        if (produtoRepository.existsById(id)) {
+            produtoRepository.deleteById(id);
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
     }
 }
