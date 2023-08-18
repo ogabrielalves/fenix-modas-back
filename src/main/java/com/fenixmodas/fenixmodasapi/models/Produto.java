@@ -1,7 +1,7 @@
 package com.fenixmodas.fenixmodasapi.models;
 
-import com.fenixmodas.fenixmodasapi.dtos.request.produto.DadosAtualizacaoProduto;
-import com.fenixmodas.fenixmodasapi.dtos.request.produto.NovoProduto;
+import com.fenixmodas.fenixmodasapi.dtos.produto.DadosAtualizacaoProduto;
+import com.fenixmodas.fenixmodasapi.dtos.produto.NovoProduto;
 import jakarta.persistence.*;
 import lombok.*;
 

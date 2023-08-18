@@ -1,4 +1,4 @@
-package com.fenixmodas.fenixmodasapi.dtos.request.produto;
+package com.fenixmodas.fenixmodasapi.dtos.produto;
 
 import com.fenixmodas.fenixmodasapi.models.Produto;
 

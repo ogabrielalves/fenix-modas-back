@@ -1,8 +1,8 @@
 package com.fenixmodas.fenixmodasapi.controllers;
 
-import com.fenixmodas.fenixmodasapi.dtos.request.produto.DadosAtualizacaoProduto;
-import com.fenixmodas.fenixmodasapi.dtos.request.produto.ListagemProdutos;
-import com.fenixmodas.fenixmodasapi.dtos.request.produto.NovoProduto;
+import com.fenixmodas.fenixmodasapi.dtos.produto.DadosAtualizacaoProduto;
+import com.fenixmodas.fenixmodasapi.dtos.produto.ListagemProdutos;
+import com.fenixmodas.fenixmodasapi.dtos.produto.NovoProduto;
 import com.fenixmodas.fenixmodasapi.services.ProdutoService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.transaction.Transactional;

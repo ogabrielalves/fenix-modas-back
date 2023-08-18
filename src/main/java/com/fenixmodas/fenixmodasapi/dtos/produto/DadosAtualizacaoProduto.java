@@ -1,4 +1,4 @@
-package com.fenixmodas.fenixmodasapi.dtos.request.produto;
+package com.fenixmodas.fenixmodasapi.dtos.produto;
 
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotNull;

@@ -1,8 +1,8 @@
 package com.fenixmodas.fenixmodasapi.services;
 
-import com.fenixmodas.fenixmodasapi.dtos.request.produto.DadosAtualizacaoProduto;
-import com.fenixmodas.fenixmodasapi.dtos.request.produto.ListagemProdutos;
-import com.fenixmodas.fenixmodasapi.dtos.request.produto.NovoProduto;
+import com.fenixmodas.fenixmodasapi.dtos.produto.DadosAtualizacaoProduto;
+import com.fenixmodas.fenixmodasapi.dtos.produto.ListagemProdutos;
+import com.fenixmodas.fenixmodasapi.dtos.produto.NovoProduto;
 import com.fenixmodas.fenixmodasapi.models.Produto;
 import com.fenixmodas.fenixmodasapi.repositories.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
