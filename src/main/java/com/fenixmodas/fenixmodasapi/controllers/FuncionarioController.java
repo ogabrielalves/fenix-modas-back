@@ -3,6 +3,7 @@ package com.fenixmodas.fenixmodasapi.controllers;
 import com.fenixmodas.fenixmodasapi.dtos.request.funcionario.ListagemFuncionarios;
 import com.fenixmodas.fenixmodasapi.dtos.request.funcionario.NovoFuncionario;
 import com.fenixmodas.fenixmodasapi.services.FuncionarioService;
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -30,6 +31,7 @@ public class FuncionarioController {
     }
 
     @DeleteMapping("/{id}")
+    @Transactional
     public ResponseEntity<?> excluirFuncionario(@PathVariable Long id) {
         return service.excluirFuncionario(id);
     }
