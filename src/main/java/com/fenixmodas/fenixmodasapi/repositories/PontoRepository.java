@@ -4,12 +4,15 @@ import com.fenixmodas.fenixmodasapi.models.Ponto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.time.Instant;
+import java.time.LocalDate;
 import java.util.List;
 
 public interface PontoRepository extends JpaRepository<Ponto, Long> {
-    @Query(value = "SELECT * FROM ponto WHERE data = CURDATE() AND tipoRegistro = 'ENTRADA' AND idFuncionario =?1")
-    List<Ponto> findPontoByIdFuncionarioAndTipoRegistro(Long idFuncionario);
+    @Query("SELECT p FROM pontos p WHERE DATE(p.horarioPonto)=?1 AND p.funcionario.id=?2")
+    List<Ponto> existsByHorarioPontoAndFuncionario(LocalDate dataAtual, Long idFuncionario);
 
-    @Query(value = "SELECT * FROM ponto WHERE data = CURDATE() AND tipoRegistro = 'ENTRADA' AND idFuncionario =?1")
-    Boolean existsByPontoByIdFuncionarioAndTipoRegistro(Long idFuncionario);
+    @Query("SELECT p FROM pontos p WHERE DATE(p.horarioPonto)=?1 AND p.funcionario.id=?2")
+    Ponto selecionaHora(LocalDate dataAtual, Long idFuncionario);
+
 }

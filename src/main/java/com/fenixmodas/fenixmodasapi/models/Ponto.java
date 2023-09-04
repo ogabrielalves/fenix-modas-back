@@ -1,5 +1,6 @@
 package com.fenixmodas.fenixmodasapi.models;
 
+import com.fenixmodas.fenixmodasapi.dtos.ponto.NovoPonto;
 import com.fenixmodas.fenixmodasapi.enums.TipoRegistro;
 import jakarta.persistence.*;
 import lombok.*;
@@ -18,8 +19,8 @@ public class Ponto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "id_funcionario")
-    @ManyToMany
+    @ManyToOne
+    @JoinColumn(name = "id_funcionario")
     private Funcionario funcionario;
 
     @Enumerated(EnumType.STRING)
@@ -28,4 +29,10 @@ public class Ponto {
 
     @Column(name = "horario_ponto")
     private Instant horarioPonto;
+
+    public Ponto(NovoPonto dados) {
+        this.funcionario = dados.funcionario();
+        this.tipoRegistro = dados.tipoRegistro();
+        this.horarioPonto = dados.horarioPonto();
+    }
 }
